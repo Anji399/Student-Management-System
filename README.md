@@ -41,3 +41,10 @@ The application has 3 user roles: student, teacher, and admin. Each role has acc
   <li>Maven</li>
 </ul>
 
+#MySQL Queries to run after 'mvn clean install" (if fresh db)
+
+INSERT INTO role (name) VALUES ('ROLE_STUDENT');
+INSERT INTO role (name) VALUES ('ROLE_TEACHER');
+
+
+
