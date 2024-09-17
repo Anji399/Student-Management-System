@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'ENVIRONMENT', defaultValue: 'development', description: 'Deployment Environment (development, SIT)')
-    }
     stages {
         stage('Checkout') {
             steps {
@@ -17,22 +14,6 @@ pipeline {
                     bat 'mvn clean install'
                 }
             }
-        }
-        stage('Deploy') {
-            steps {
-                script {
-                    echo "Deploying to ${params.ENVIRONMENT} environment"
-                    bat "java -jar target/student-management-0.0.1-SNAPSHOT.jar --spring.profiles.active=${params.ENVIRONMENT}"
-                }
-            }
-        }
-    }
-    post {
-        success {
-            echo 'Pipeline completed successfully.'
-        }
-        failure {
-            echo 'Pipeline failed.'
         }
     }
 }
