@@ -1,0 +1,1 @@
+java -jar C:\Users\user\.jenkins\workspace\Student MS\target\student-management-0.0.1-SNAPSHOT.jar --spring.profiles.active=sit
