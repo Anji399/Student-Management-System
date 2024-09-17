@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     echo "Deploying to ${params.ENVIRONMENT} environment"
-                    bat "java -jar target/your-app.jar --spring.profiles.active=${params.ENVIRONMENT}"
+                    bat "java -jar target/student-management-0.0.1-SNAPSHOT.jar --spring.profiles.active=${params.ENVIRONMENT}"
                 }
             }
         }
