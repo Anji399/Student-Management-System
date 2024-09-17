@@ -23,8 +23,9 @@ pipeline {
                     
                     // Check if the JAR file exists before running it
                     if (fileExists(jarPath)) {
-                        echo "Starting the backend..."
-                        bat "java -jar ${jarPath}"
+                        echo "Starting the backend in the background..."
+                        // Use 'start' to run the application in a new window, allowing Jenkins to continue
+                        bat "start /B java -jar ${jarPath}"
                     } else {
                         error "JAR file not found at ${jarPath}. Ensure the build step succeeded."
                     }
