@@ -128,6 +128,78 @@ mysql -u root -pPrasanna@2024 -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 
 # Create the database 'spring_security_custom_user_demo'
 mysql -u root -pPrasanna@2024 -e "CREATE DATABASE spring_security_custom_user_demo;"
 
-# Print completion message
-echo "MySQL installation, configuration, and database creation complete."
+# Create the tables in the 'spring_security_custom_user_demo' database
+mysql -u root -pPrasanna@2024 spring_security_custom_user_demo <<EOF
+CREATE TABLE assignment (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    due_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
+CREATE TABLE assignment_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    assignment_id INT,
+    student_id INT,
+    submission_date DATE,
+    grade VARCHAR(10),
+    FOREIGN KEY (assignment_id) REFERENCES assignment(id),
+    FOREIGN KEY (student_id) REFERENCES student(id)
+);
+
+CREATE TABLE course (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    course_description TEXT,
+    teacher_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (teacher_id) REFERENCES teacher(id)
+);
+
+CREATE TABLE grade_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    grade VARCHAR(10),
+    FOREIGN KEY (student_id) REFERENCES student(id),
+    FOREIGN KEY (course_id) REFERENCES course(id)
+);
+
+CREATE TABLE role (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE student (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    role_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (role_id) REFERENCES role(id)
+);
+
+CREATE TABLE student_course_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    enrollment_date DATE,
+    FOREIGN KEY (student_id) REFERENCES student(id),
+    FOREIGN KEY (course_id) REFERENCES course(id)
+);
+
+CREATE TABLE teacher (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    role_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (role_id) REFERENCES role(id)
+);
+EOF
+
+# Print completion message
+echo "MySQL installation, configuration, database and tables creation complete."
