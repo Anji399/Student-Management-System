@@ -18,7 +18,7 @@ pipeline {
         stage('Deploy') {
            steps {
              script {
-                    sh 'cp /target/*.jar /opt/tomcat/latest/webapps/ROOT.jar'
+                    sh 'cp /var/lib/jenkins/workspace/Student Management/target/student-management-0.0.1-SNAPSHOT.jar /opt/tomcat/latest/webapps/ROOT.jar'
              }
           }
        }
