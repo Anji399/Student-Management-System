@@ -1,0 +1,30 @@
+
+pipeline {
+    agent any
+    triggers {
+        pollSCM('* * * * *')  
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    git changelog: false, url: 'https://github.com/Anji399/Student-Management-System.git'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    bat 'mvn clean install'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    bat 'copy "C:\\Users\\user\\.jenkins\\workspace\\Student MS\\target\\student-management-0.0.1-SNAPSHOT.jar" "C:\\Program Files\\apache-tomcat-9.0.89\\webapps\\SMS.jar"'
+                }
+            }
+        }
+    }
+}
