@@ -56,6 +56,24 @@ sudo sed -i 's/" \/>/" \/> -->/g' /opt/tomcat/latest/webapps/manager/META-INF/co
 sudo sed -i 's/port="8080"/port="8085"/g' /opt/tomcat/latest/conf/server.xml
 sudo systemctl restart tomcat
 
+sudo chown -R jenkins:jenkins /opt/tomcat/latest/webapps/
+sudo chmod -R 775 /opt/tomcat/latest/webapps/
+#!/bin/bash
+
+# Add Jenkins to sudoers if not already present
+sudo grep -q '^jenkins ALL=(ALL) NOPASSWD: ALL' /etc/sudoers || echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
+
+# Validate sudoers file to ensure there are no syntax errors
+sudo visudo -c
+
+if [ $? -eq 0 ]; then
+    echo "Jenkins added to sudoers successfully."
+else
+    echo "Error: Invalid sudoers file."
+fi
+
+sudo usermod -aG $USER jenkins
+
 #!/bin/bash
 
 # Update package index
