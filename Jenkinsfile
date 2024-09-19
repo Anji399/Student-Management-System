@@ -15,5 +15,12 @@ pipeline {
                 }
             }
         }
+        stage('Deploy') {
+           steps {
+             script {
+                    sh 'cp /target/*.jar /opt/tomcat/latest/webapps/ROOT.jar'
+             }
+          }
+       }
     }
 }
