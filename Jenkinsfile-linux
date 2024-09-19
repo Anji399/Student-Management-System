@@ -21,7 +21,7 @@ pipeline {
         stage('deploy') {
            steps {
              script {
-                   sh 'sudo cp /var/lib/jenkins/workspace/Student Management/target/student-management-0.0.1-SNAPSHOT.jar /opt/tomcat/latest/webapps/student-management.jar'
+                   sh 'sudo cp /var/lib/jenkins/workspace/Student\ Management/target/student-management-0.0.1-SNAPSHOT.jar /opt/tomcat/latest/webapps/student-management.jar'
              }
           }
        } 
