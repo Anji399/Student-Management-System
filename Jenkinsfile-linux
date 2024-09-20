@@ -18,10 +18,24 @@ pipeline {
                 }
             }
         }
-        stage('deploy') {
+        stage('Insert Roles into Database') {
+            steps {
+                script {
+                    // Running MySQL commands to insert roles into the database
+                    sh '''
+                    mysql -u root -pPrasanna@2024 -e "
+                    USE spring_security_custom_user_demo;
+                    INSERT INTO role (name) VALUES ('ROLE_STUDENT');
+                    INSERT INTO role (name) VALUES ('ROLE_TEACHER');
+                    "
+                    '''
+                }
+            }
+        }
+        stage('Deploy') {
            steps {
              script {
-                   sh 'sudo cp /var/lib/jenkins/workspace/Student-Management/target/student-management-0.0.1-SNAPSHOT.jar /opt/tomcat/latest/webapps/student-management.jar'
+                sh 'sudo cp /var/lib/jenkins/workspace/Student-Management/target/student-management-0.0.1-SNAPSHOT.jar /opt/tomcat/latest/webapps/student-management.jar'
              }
           }
        } 
