@@ -131,7 +131,7 @@ mysql -u root -pPrasanna@2024 -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 
 
 # Create the database and insert roles for Spring Security
 mysql -u root -pPrasanna@2024 -e "CREATE DATABASE spring_security_custom_user_demo;"
-mysql -u root -pPrasanna@2024 -e "USE spring_security_custom_user_demo; INSERT INTO role (name) VALUES ('ROLE_STUDENT'), ('ROLE_TEACHER');"
+
 
 # Print completion message
-echo "MySQL installation, configuration, database creation, and role insertion complete."
+echo "MySQL installation, configuration, database creation complete."
