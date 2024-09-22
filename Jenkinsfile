@@ -15,11 +15,11 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        // Run on Linux
-                        sh 'mvn clean install'
+                        // Run on Linux with the 'linux' profile
+                        sh 'mvn clean install -Dspring.profiles.active=linux'
                     } else {
-                        // Run on Windows
-                        bat 'mvn clean install'
+                        // Run on Windows with the 'windows' profile
+                        bat 'mvn clean install -Dspring.profiles.active=windows'
                     }
                 }
             }
