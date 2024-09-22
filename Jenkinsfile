@@ -25,19 +25,23 @@ pipeline {
             }
         }
         stage('Insert Roles into Database') {
-            when {
-                expression { isUnix() } // Only for Linux environment
-            }
             steps {
                 script {
-                    // MySQL commands for Linux to insert roles into the database
-                    sh '''
-                    mysql -u root -pPrasanna@2024 -e "
-                    USE spring_security_custom_user_demo;
-                    INSERT INTO role (name) VALUES ('ROLE_STUDENT');
-                    INSERT INTO role (name) VALUES ('ROLE_TEACHER');
-                    "
-                    '''
+                    if (isUnix()) {
+                        // MySQL commands for Linux to insert roles into the database
+                        sh '''
+                        mysql -u root -pPrasanna@2024 -e "
+                        USE spring_security_custom_user_demo;
+                        INSERT INTO role (name) VALUES ('ROLE_STUDENT');
+                        INSERT INTO role (name) VALUES ('ROLE_TEACHER');
+                        "
+                        '''
+                    } else {
+                        // MySQL commands for Windows to insert roles into the database
+                        bat '''
+                        mysql -u root -pPrasanna@9334 -e "USE spring_security_custom_user_demo; INSERT INTO role (name) VALUES ('ROLE_STUDENT'); INSERT INTO role (name) VALUES ('ROLE_TEACHER');"
+                        '''
+                    }
                 }
             }
         }
