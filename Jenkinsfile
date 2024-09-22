@@ -38,8 +38,9 @@ pipeline {
                         '''
                     } else {
                         // MySQL commands for Windows to insert roles into the database
+                        // Ensure that mysql.exe is in PATH, or provide the full path to mysql.exe
                         bat '''
-                        mysql -u root -pPrasanna@9334 -e "USE spring_security_custom_user_demo; INSERT INTO role (name) VALUES ('ROLE_STUDENT'); INSERT INTO role (name) VALUES ('ROLE_TEACHER');"
+                        "C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\mysql.exe" -u root -pPrasanna@9334 -e "USE spring_security_custom_user_demo; INSERT INTO role (name) VALUES ('ROLE_STUDENT'); INSERT INTO role (name) VALUES ('ROLE_TEACHER');"
                         '''
                     }
                 }
