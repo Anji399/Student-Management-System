@@ -61,7 +61,7 @@ pipeline {
                         sh 'sudo cp /var/lib/jenkins/workspace/Student-Management/target/student-management-0.0.1-SNAPSHOT.jar /opt/tomcat/latest/webapps/student-management.jar'
                     } else {
                         // Deployment for Windows
-                        bat 'copy "C:\\Users\\user\\.jenkins\\workspace\\Student MS\\target\\student-management-0.0.1-SNAPSHOT.jar" "C:\\Program Files\\apache-tomcat-9.0.89\\webapps\\SMS.jar"'
+                        bat 'copy "C:\\Users\\user\\.jenkins\\workspace\\Student MS\\target\\student-management-0.0.1-SNAPSHOT.war" "C:\\Program Files\\apache-tomcat-9.0.89\\webapps\\SMS.war"'
                     }
                 }
             }
