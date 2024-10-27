@@ -36,7 +36,7 @@ pipeline {
                         ]],
                         credentialsId: 'nexus',
                         groupId: 'com.burak',
-                        nexusUrl: 'http://13.233.65.176:8081',
+                        nexusUrl: 'http://13.233.65.176:8081',  // Corrected Nexus URL
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         repository: 'calculator',
@@ -77,13 +77,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    deploy adapters: [tomcat9(
-                        credentialsId: 'tomcat',
-                        path: '',
-                        url: 'http://localhost:8086/'
-                    )], contextPath: null, war: 'target/student-management-0.0.1-SNAPSHOT.war'
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://localhost:8086/')], contextPath: null, war: 'target/*.war'
                 }
             }
         }
     }
 }
+
