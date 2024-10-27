@@ -28,16 +28,16 @@ pipeline {
             steps {
                 script {
                    nexusArtifactUploader(
-                        credentialsId: 'nexus', 
-                        groupId: 'com.burak', 
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        nexusUrl: 'http://13.233.65.176:8081/nexus',
+                        repository: 'calculator',
+                        credentialsId: 'nexus',
+                        groupId: 'com.burak',
+                        version: '0.0.1-SNAPSHOT',
                         artifactId: 'student-management',
-                        version: '0.0.1-SNAPSHOT', 
                         packaging: 'war',
-                        classifier: '',
-                        nexusUrl: 'http://13.233.65.176:8081/nexus', 
-                        repository: 'calculator', 
-                        nexusVersion: 'nexus3', 
-                        protocol: 'http'
+                        artifactPaths: 'target/student-management-0.0.1-SNAPSHOT.war'
                     )
                 }
             }
