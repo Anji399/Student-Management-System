@@ -30,7 +30,7 @@ pipeline {
                    nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        nexusUrl: 'http://13.233.65.176:8081/nexus',
+                        nexusUrl: '13.233.65.176:8081/nexus',
                         repository: 'calculator',
                         credentialsId: 'nexus',
                         groupId: 'com.burak',
