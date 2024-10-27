@@ -84,5 +84,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement> 
+          <snapshotRepository> 
+	    <id>calculator</id> 
+	    <name>calculator</name> 
+	    <url>http://13.233.65.176:8081/repository/calculator/</url> 
+	  </snapshotRepository> 
+	</distributionManagement>
 
 </project>
