@@ -36,10 +36,10 @@ pipeline {
                         ]],
                         credentialsId: 'nexus',
                         groupId: 'com.burak',
-                        nexusUrl: 'http://13.233.65.176:8081',  // Corrected Nexus URL
+                        nexusUrl: '13.233.65.176:8081',
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        repository: 'calculator',
+                        repository: 'calculator',  // Ensure this is the correct repository name
                         version: '0.0.1-SNAPSHOT'
                     )
                 }
