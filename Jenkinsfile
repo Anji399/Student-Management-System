@@ -35,9 +35,7 @@ pipeline {
                         credentialsId: 'nexus',
                         groupId: 'com.burak',
                         version: '0.0.1-SNAPSHOT',
-                        artifactId: 'student-management',
-                        packaging: 'war',
-                        artifactPaths: 'target/student-management-0.0.1-SNAPSHOT.war'
+                        artifacts: [[artifactId: 'student-management', file: 'target/student-management-0.0.1-SNAPSHOT.war']]
                     )
                 }
             }
