@@ -27,7 +27,7 @@ pipeline {
         stage('Upload artifacts to Nexus'){
             steps {
                 script {
-                    nexusArtifactUploader credentialsId: 'nexus', groupId: 'com.burak', nexusUrl: '13.233.65.176:8081/nexus', nexusVersion: 'nexus3', protocol: 'http', repository: 'calculator', version: '0.0.1-SNAPSHOT'
+                    nexusArtifactUploader credentialsId: 'nexus', groupId: 'com.burak', nexusUrl: 'http://13.233.65.176:8081/nexus', nexusVersion: 'nexus3', protocol: 'http', repository: 'calculator', version: '0.0.1-SNAPSHOT'
                 }
             }
         }    
