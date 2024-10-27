@@ -24,10 +24,24 @@ pipeline {
                 }
             }
         }
-        stage('Upload artifacts to Nexus'){
+        stage('Upload artifacts to Nexus') {
             steps {
                 script {
-                   nexusArtifactUploader artifacts: [[artifactId: 'student-management', classifier: '', file: 'target/student-management-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.burak', nexusUrl: '13.233.65.176:8081/nexus', nexusVersion: 'nexus3', protocol: 'http', repository: 'calculator', version: '0.0.1-SNAPSHOT'
+                    nexusArtifactUploader(
+                        artifacts: [[
+                            artifactId: 'student-management',
+                            classifier: '',
+                            file: 'target/student-management-0.0.1-SNAPSHOT.war',
+                            type: 'war'
+                        ]],
+                        credentialsId: 'nexus',
+                        groupId: 'com.burak',
+                        nexusUrl: 'http://13.233.65.176:8081',
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        repository: 'calculator',
+                        version: '0.0.1-SNAPSHOT'
+                    )
                 }
             }
         }    
@@ -63,7 +77,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                   deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://localhost:8086/')], contextPath: null, war: 'target/*.war'
+                    deploy adapters: [tomcat9(
+                        credentialsId: 'tomcat',
+                        path: '',
+                        url: 'http://localhost:8086/'
+                    )], contextPath: null, war: 'target/student-management-0.0.1-SNAPSHOT.war'
                 }
             }
         }
