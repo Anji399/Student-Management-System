@@ -48,5 +48,35 @@ INSERT INTO role (name) VALUES ('ROLE_STUDENT');
 
 INSERT INTO role (name) VALUES ('ROLE_TEACHER');
 
+Maven for Nexus:
+----------------
+
+conf/settings.xml:
+
+
+    <server>
+      
+      <id>registerwebsite</id>
+      
+      <username>admin</username>
+      
+      <password>admin123</password>
+      
+    </server>
+
+
+#sudo docker run -d -p 8081:8081 sonatype/nexus3
+
+#sudo docker exec -it <>sonar-docker-container-name<> /bin/bash
+
+#cat /nexus-data/admin.password
+
+#sudo docker run -d -p 9000:9000 sonarqube:lts-community
+
+username: admin
+
+password: admin
+
+
 
 
