@@ -19,7 +19,7 @@ pipeline {
                         sh 'mvn clean install -Dspring.profiles.active=linux'
                     } else {
                         // Run on Windows with the 'windows' profile
-                        bat 'mvn clean install deploy -Dspring.profiles.active=windows'
+                        bat 'mvn clean install -Dspring.profiles.active=windows'
                     }
                 }
             }
