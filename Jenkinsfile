@@ -7,7 +7,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    git changelog: false, credentialsId: 'git', poll: false, url: 'https://github.com/Anji399/Student-Management-System.git'
+                    git changelog: false, poll: false, url: 'https://github.com/Anji399/Student-Management-System.git'
                 }
             }
         }
