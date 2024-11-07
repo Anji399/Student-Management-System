@@ -24,7 +24,7 @@ pipeline {
                 }
             }
         }
-        stage('Upload artifacts to Nexus') {
+/*        stage('Upload artifacts to Nexus') {
             steps {
                 script {
                     nexusArtifactUploader(
@@ -44,7 +44,7 @@ pipeline {
                     )
                 }
             }
-        }    
+        } */   
         stage('Insert Roles into Database') {
             steps {
                 script {
